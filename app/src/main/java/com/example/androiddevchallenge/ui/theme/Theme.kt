@@ -15,17 +15,13 @@
  */
 package com.example.androiddevchallenge.ui.theme
 
-import android.util.Log
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.Colors
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 import com.example.androiddevchallenge.R
-
-
 
 private val BloomLightColorPaltte = lightColors(
     primary = pink100,
@@ -48,8 +44,6 @@ private val BloomDarkColorPaltte = darkColors(
     onBackground = white,
     onSurface = white850
 )
-
-
 
 private val DarkColorPalette = darkColors(
     primary = purple200,
@@ -89,9 +83,10 @@ fun MyTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() (
 }
 
 object WelcomeAssets {
-    var background: Int = 0
-    var illos: Int = 0
-    var logo: Int = 0
+    var background: Int = R.drawable.ic_light_welcome_bg
+    var illos: Int = R.drawable.ic_light_welcome_illos
+    var logo: Int = R.drawable.ic_light_logo
+
     fun set(background: Int, illos: Int, logo: Int) {
         this.background = background
         this.illos = illos

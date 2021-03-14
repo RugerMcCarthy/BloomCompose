@@ -46,7 +46,7 @@ val bloomTypoGraphy = Typography(
     ),
     h2 = TextStyle(
         fontSize = 14.sp,
-        letterSpacing = 15.sp,
+        letterSpacing = 0.15.sp,
         fontFamily = nunitoSansFamily,
         fontWeight = FontWeight.Bold
     ),
