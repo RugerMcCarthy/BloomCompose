@@ -18,28 +18,16 @@ package com.example.androiddevchallenge
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.androiddevchallenge.ui.NavGraph
 import com.example.androiddevchallenge.ui.theme.BloomTheme
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        getWindow().setStatusBarColor(Color.Transparent.value.toInt())
         setContent {
             BloomTheme(false) {
-                NavGraph()
+                NavGraph(window)
             }
         }
-    }
-}
-
-@Preview
-@Composable
-fun AppPreview() {
-    BloomTheme(false) {
-        NavGraph()
     }
 }

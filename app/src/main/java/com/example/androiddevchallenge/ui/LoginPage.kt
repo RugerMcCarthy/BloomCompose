@@ -48,7 +48,7 @@ fun LoginPage() {
             text = "Log in with email",
             modifier = Modifier
                 .fillMaxWidth()
-                .paddingFromBaseline(top = 184.dp, bottom = 16.dp),
+                .paddingFromBaseline(top = 160.dp, bottom = 16.dp),
             style = MaterialTheme.typography.h1,
             color = MaterialTheme.colors.onPrimary,
             textAlign = TextAlign.Center
@@ -115,16 +115,16 @@ fun LoginPage() {
 
 @Composable
 @Preview
-fun LoginPageDarkPreview() {
-    BloomTheme(true) {
+fun LoginPageLightPreview() {
+    BloomTheme(false) {
         LoginPage()
     }
 }
 
 @Composable
 @Preview
-fun LoginPageLightPreview() {
-    BloomTheme(false) {
+fun LoginPageDarkPreview() {
+    BloomTheme(true) {
         LoginPage()
     }
 }

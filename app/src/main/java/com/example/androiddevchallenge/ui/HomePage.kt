@@ -94,7 +94,7 @@ fun HomePage() {
                 value = "",
                 onValueChange = {},
                 modifier = Modifier
-                    .padding(top = 40.dp, start = 16.dp, end = 16.dp)
+                    .padding(top = 16.dp, start = 16.dp, end = 16.dp)
                     .fillMaxWidth()
                     .height(56.dp)
                     .clip(RoundedCornerShape(4.dp)),
@@ -288,29 +288,30 @@ fun BottomBar() {
         }
     }
 }
-@Preview
-@Composable
-fun BottomBarPreview() {
-    BloomTheme(false) {
-        BottomBar()
-    }
-}
 
-@Preview
-@Composable
-fun DesignCardPreview() {
-    BloomTheme(false) {
-        DesignCard(designList[0])
-    }
-}
-
-@Preview
-@Composable
-fun PlantCardPreview() {
-    BloomTheme(false) {
-        PlantCard(plantList[0])
-    }
-}
+// @Preview
+// @Composable
+// fun BottomBarPreview() {
+//    BloomTheme(false) {
+//        BottomBar()
+//    }
+// }
+//
+// @Preview
+// @Composable
+// fun DesignCardPreview() {
+//    BloomTheme(false) {
+//        DesignCard(designList[0])
+//    }
+// }
+//
+// @Preview
+// @Composable
+// fun PlantCardPreview() {
+//    BloomTheme(false) {
+//        PlantCard(plantList[0])
+//    }
+// }
 
 @Preview
 @Composable

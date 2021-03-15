@@ -61,7 +61,7 @@ fun WelcomePage() {
                 contentDescription = "weclome_illos",
                 modifier = Modifier
                     .wrapContentSize()
-                    .padding(top = 72.dp, start = 88.dp)
+                    .padding(top = 48.dp, start = 88.dp)
             )
             Column(
                 modifier = Modifier
@@ -120,9 +120,17 @@ fun WelcomePage() {
     }
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
-fun WelcomePagePreview() {
+fun WelcomePageLightPreview() {
+    BloomTheme(false) {
+        WelcomePage()
+    }
+}
+
+@Preview
+@Composable
+fun WelcomePageDarkPreview() {
     BloomTheme(true) {
         WelcomePage()
     }

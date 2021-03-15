@@ -15,7 +15,10 @@
  */
 package com.example.androiddevchallenge.ui
 
+import android.view.Window
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.toArgb
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -62,18 +65,21 @@ private object RouterPath {
 }
 
 @Composable
-fun NavGraph() {
+fun NavGraph(window: Window) {
     val navHostController = rememberNavController()
     TouristGuide.navController = navHostController
 
     NavHost(navController = navHostController, startDestination = RouterPath.WELCOME) {
         composable(RouterPath.WELCOME) {
+            window.statusBarColor = MaterialTheme.colors.primary.toArgb()
             WelcomePage()
         }
         composable(RouterPath.LOGIN) {
+            window.statusBarColor = MaterialTheme.colors.background.toArgb()
             LoginPage()
         }
         composable(RouterPath.HOME) {
+            window.statusBarColor = MaterialTheme.colors.background.toArgb()
             HomePage()
         }
     }
