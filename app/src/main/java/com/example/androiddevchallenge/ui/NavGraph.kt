@@ -35,24 +35,30 @@ object TouristGuide {
     fun toWelcome() {
         navController?.navigate(RouterPath.WELCOME) {
             anim {
-                enter = R.anim.slide_in_right
-                exit = R.anim.slide_out_left
+                this.enter = R.anim.slide_in_right
+                this.exit = R.anim.slide_out_left
+                this.popEnter = R.anim.slide_in_left
+                this.popExit = R.anim.slide_out_right
             }
         }
     }
     fun toLogin() {
         navController?.navigate(RouterPath.LOGIN) {
             anim {
-                enter = R.anim.slide_in_right
-                exit = R.anim.slide_out_left
+                this.enter = R.anim.slide_in_right
+                this.exit = R.anim.slide_out_left
+                this.popEnter = R.anim.slide_in_left
+                this.popExit = R.anim.slide_out_right
             }
         }
     }
     fun toHome() {
         navController?.navigate(RouterPath.HOME) {
             anim {
-                enter = R.anim.slide_in_right
-                exit = R.anim.slide_out_left
+                this.enter = R.anim.slide_in_right
+                this.exit = R.anim.slide_out_left
+                this.popEnter = R.anim.slide_in_left
+                this.popExit = R.anim.slide_out_right
             }
         }
     }

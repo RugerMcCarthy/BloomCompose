@@ -21,6 +21,8 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.staticCompositionLocalOf
 import com.example.androiddevchallenge.R
 
 private val BloomLightColorPaltte = lightColors(
@@ -82,44 +84,41 @@ fun MyTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() (
     )
 }
 
-object WelcomeAssets {
-    var background: Int = R.drawable.ic_light_welcome_bg
-    var illos: Int = R.drawable.ic_light_welcome_illos
+data class WelcomeAssets(
+    var background: Int = R.drawable.ic_light_welcome_bg,
+    var illos: Int = R.drawable.ic_light_welcome_illos,
     var logo: Int = R.drawable.ic_light_logo
+)
 
-    fun set(background: Int, illos: Int, logo: Int) {
-        this.background = background
-        this.illos = illos
-        this.logo = logo
-    }
-}
+internal var LocalWelcomeAssets = staticCompositionLocalOf { WelcomeAssets() }
 
-val MaterialTheme.welcomeAssets: WelcomeAssets
-    get() = WelcomeAssets
+@Composable
+fun MaterialTheme.getWelcomeAssets() = LocalWelcomeAssets.current
 
 @Composable
 fun BloomTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
-    var colors: Colors
-    if (darkTheme) {
-        colors = BloomDarkColorPaltte
-        WelcomeAssets.set(
+    val welcomeAssets = if (darkTheme) {
+        WelcomeAssets(
             background = R.drawable.ic_dark_welcome_bg,
             illos = R.drawable.ic_dark_welcome_illos,
             logo = R.drawable.ic_dark_logo
         )
     } else {
-        colors = BloomLightColorPaltte
-        WelcomeAssets.set(
+        WelcomeAssets(
             background = R.drawable.ic_light_welcome_bg,
             illos = R.drawable.ic_light_welcome_illos,
             logo = R.drawable.ic_light_logo
         )
     }
 
-    MaterialTheme(
-        colors = colors,
-        typography = bloomTypoGraphy,
-        shapes = shapes,
-        content = content
-    )
+    CompositionLocalProvider(
+        LocalWelcomeAssets provides welcomeAssets
+    ) {
+        MaterialTheme(
+            colors = if (darkTheme) BloomDarkColorPaltte else BloomLightColorPaltte,
+            typography = bloomTypoGraphy,
+            shapes = shapes,
+            content = content
+        )
+    }
 }
