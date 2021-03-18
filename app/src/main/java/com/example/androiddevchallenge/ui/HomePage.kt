@@ -68,7 +68,10 @@ val designList = listOf(
     Item("Monstera", R.drawable.monstera),
     Item("Aglaonema", R.drawable.aglaonema),
     Item("Peace lily", R.drawable.peace_lily),
-    Item("Fiddle leaf tree", R.drawable.fiddle_leaf)
+    Item("Fiddle leaf tree", R.drawable.fiddle_leaf),
+    Item("Desert chic", R.drawable.desert_chic),
+    Item("Tiny terrariums", R.drawable.tiny_terrariums),
+    Item("Jungle Vibes", R.drawable.jungle_vibes)
 )
 
 val navList = listOf(
@@ -162,7 +165,8 @@ fun HomePage() {
             LazyColumn(
                 modifier = Modifier
                     .padding(top = 16.dp)
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
+                contentPadding = PaddingValues(bottom = 56.dp)
             ) {
                 items(designList.size) {
                     if (it != 0) {
@@ -209,14 +213,16 @@ fun DesignCard(plant: Item) {
                     )
                 }
                 Checkbox(
-                    checked = plant.name == "Monstera",
-                    onCheckedChange = {},
+                    modifier = Modifier
+                        .padding(top = 24.dp)
+                        .size(24.dp),
+                    checked = plant.enable,
+                    onCheckedChange = {
+                        plant.enable = it
+                    },
                     colors = CheckboxDefaults.colors(
                         checkmarkColor = MaterialTheme.colors.background
-                    ),
-                    modifier = Modifier
-                        .size(24.dp)
-                        .padding(top = 24.dp)
+                    )
                 )
             }
             Divider(color = MaterialTheme.colors.onPrimary, modifier = Modifier.padding(top = 16.dp), thickness = 0.5.dp)
@@ -293,7 +299,7 @@ fun BottomBar() {
 @Preview
 @Composable
 fun BottomBarPreview() {
-    BloomTheme(false) {
+    BloomTheme() {
         BottomBar()
     }
 }
@@ -301,7 +307,7 @@ fun BottomBarPreview() {
 @Preview
 @Composable
 fun DesignCardPreview() {
-    BloomTheme(false) {
+    BloomTheme() {
         DesignCard(designList[0])
     }
 }
@@ -309,7 +315,7 @@ fun DesignCardPreview() {
 @Preview
 @Composable
 fun PlantCardPreview() {
-    BloomTheme(false) {
+    BloomTheme() {
         PlantCard(plantList[0])
     }
 }
@@ -317,7 +323,7 @@ fun PlantCardPreview() {
 @Preview
 @Composable
 fun HomePageLightPreview() {
-    BloomTheme(false) {
+    BloomTheme() {
         HomePage()
     }
 }
@@ -325,7 +331,7 @@ fun HomePageLightPreview() {
 @Preview
 @Composable
 fun HomePageDarkPreview() {
-    BloomTheme(true) {
+    BloomTheme() {
         HomePage()
     }
 }

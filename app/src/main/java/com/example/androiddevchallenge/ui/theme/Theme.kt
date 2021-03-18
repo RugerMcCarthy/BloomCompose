@@ -15,13 +15,12 @@
  */
 package com.example.androiddevchallenge.ui.theme
 
-import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.Colors
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.staticCompositionLocalOf
 import com.example.androiddevchallenge.R
 
@@ -47,75 +46,39 @@ private val BloomDarkColorPaltte = darkColors(
     onSurface = white850
 )
 
-private val DarkColorPalette = darkColors(
-    primary = purple200,
-    primaryVariant = purple700,
-    secondary = teal200
+open class WelcomeAssets(var background: Int, var illos: Int, var logo: Int)
+
+object LightWelcomeAssets : WelcomeAssets(
+    background = R.drawable.ic_light_welcome_bg,
+    illos = R.drawable.ic_light_welcome_illos,
+    logo = R.drawable.ic_light_logo
 )
 
-private val LightColorPalette = lightColors(
-    primary = purple500,
-    primaryVariant = purple700,
-    secondary = teal200
-
-        /* Other default colors to override
-    background = Color.White,
-    surface = Color.White,
-    onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black,
-    */
+object DarkWelcomeAssets : WelcomeAssets(
+    background = R.drawable.ic_dark_welcome_bg,
+    illos = R.drawable.ic_dark_welcome_illos,
+    logo = R.drawable.ic_dark_logo
 )
 
-@Composable
-fun MyTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
-    val colors = if (darkTheme) {
-        DarkColorPalette
-    } else {
-        LightColorPalette
-    }
+internal var LocalWelcomeAssets = staticCompositionLocalOf { LightWelcomeAssets as WelcomeAssets }
 
-    MaterialTheme(
-        colors = colors,
-        typography = typography,
-        shapes = shapes,
-        content = content
-    )
+val MaterialTheme.welcomeAssets
+    @Composable
+    @ReadOnlyComposable
+    get() = LocalWelcomeAssets.current
+
+enum class BloomTheme {
+    LIGHT, DARK
 }
 
-data class WelcomeAssets(
-    var background: Int = R.drawable.ic_light_welcome_bg,
-    var illos: Int = R.drawable.ic_light_welcome_illos,
-    var logo: Int = R.drawable.ic_light_logo
-)
-
-internal var LocalWelcomeAssets = staticCompositionLocalOf { WelcomeAssets() }
-
 @Composable
-fun MaterialTheme.getWelcomeAssets() = LocalWelcomeAssets.current
-
-@Composable
-fun BloomTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
-    val welcomeAssets = if (darkTheme) {
-        WelcomeAssets(
-            background = R.drawable.ic_dark_welcome_bg,
-            illos = R.drawable.ic_dark_welcome_illos,
-            logo = R.drawable.ic_dark_logo
-        )
-    } else {
-        WelcomeAssets(
-            background = R.drawable.ic_light_welcome_bg,
-            illos = R.drawable.ic_light_welcome_illos,
-            logo = R.drawable.ic_light_logo
-        )
-    }
-
+fun BloomTheme(theme: BloomTheme = BloomTheme.LIGHT, content: @Composable() () -> Unit) {
+    val welcomeAssets = if (theme == BloomTheme.DARK) DarkWelcomeAssets else LightWelcomeAssets
     CompositionLocalProvider(
-        LocalWelcomeAssets provides welcomeAssets
+        LocalWelcomeAssets provides welcomeAssets,
     ) {
         MaterialTheme(
-            colors = if (darkTheme) BloomDarkColorPaltte else BloomLightColorPaltte,
+            colors = if (theme == BloomTheme.DARK) BloomDarkColorPaltte else BloomLightColorPaltte,
             typography = bloomTypoGraphy,
             shapes = shapes,
             content = content

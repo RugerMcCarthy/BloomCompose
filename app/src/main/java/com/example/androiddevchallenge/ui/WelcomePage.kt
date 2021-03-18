@@ -41,7 +41,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.ui.theme.BloomTheme
-import com.example.androiddevchallenge.ui.theme.getWelcomeAssets
+import com.example.androiddevchallenge.ui.theme.welcomeAssets
 
 @Composable
 fun WelcomePage() {
@@ -51,13 +51,13 @@ fun WelcomePage() {
             .background(MaterialTheme.colors.primary)
     ) {
         Image(
-            painter = rememberVectorPainter(image = ImageVector.vectorResource(id = MaterialTheme.getWelcomeAssets().background)),
+            painter = rememberVectorPainter(image = ImageVector.vectorResource(id = MaterialTheme.welcomeAssets.background)),
             contentDescription = "weclome_bg",
             modifier = Modifier.fillMaxSize()
         )
         Column(modifier = Modifier.fillMaxSize()) {
             Image(
-                painter = rememberVectorPainter(image = ImageVector.vectorResource(id = MaterialTheme.getWelcomeAssets().illos)),
+                painter = rememberVectorPainter(image = ImageVector.vectorResource(id = MaterialTheme.welcomeAssets.illos)),
                 contentDescription = "weclome_illos",
                 modifier = Modifier
                     .wrapContentSize()
@@ -70,7 +70,7 @@ fun WelcomePage() {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Image(
-                    painter = rememberVectorPainter(image = ImageVector.vectorResource(id = MaterialTheme.getWelcomeAssets().logo)),
+                    painter = rememberVectorPainter(image = ImageVector.vectorResource(id = MaterialTheme.welcomeAssets.logo)),
                     contentDescription = "weclome_logo",
                     modifier = Modifier.wrapContentSize()
                 )
@@ -123,7 +123,7 @@ fun WelcomePage() {
 @Preview
 @Composable
 fun WelcomePageLightPreview() {
-    BloomTheme(false) {
+    BloomTheme() {
         WelcomePage()
     }
 }
@@ -131,7 +131,7 @@ fun WelcomePageLightPreview() {
 @Preview
 @Composable
 fun WelcomePageDarkPreview() {
-    BloomTheme(true) {
+    BloomTheme() {
         WelcomePage()
     }
 }

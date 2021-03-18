@@ -116,7 +116,7 @@ fun LoginPage() {
 @Composable
 @Preview
 fun LoginPageLightPreview() {
-    BloomTheme(false) {
+    BloomTheme() {
         LoginPage()
     }
 }
@@ -124,7 +124,7 @@ fun LoginPageLightPreview() {
 @Composable
 @Preview
 fun LoginPageDarkPreview() {
-    BloomTheme(true) {
+    BloomTheme() {
         LoginPage()
     }
 }

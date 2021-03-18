@@ -15,4 +15,10 @@
  */
 package com.example.androiddevchallenge.data
 
-data class Item(val name: String, val resId: Int)
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+
+data class Item(val name: String, val resId: Int) {
+    var enable: Boolean by mutableStateOf(false)
+}
