@@ -15,9 +15,16 @@
  */
 
 buildscript {
-    ext.kotlin_version = '1.4.31'
-    ext.compose_version = '1.0.0-beta02'
-    ext.coroutines_version = '1.4.2'
+    ext {
+        android_gradle_plugin_version = '4.1.2'
+        kotlin_version = '1.5.10'
+        coroutines_version = '1.4.3'
+
+        compose_version = '1.0.0-beta08'//1.0.0-beta09 some low level android device get crash !! libart.so or libart.jar lost
+        compose_activity_version = '1.3.0-beta01'
+        compose_appcompat_version = '1.3.0'
+        compose_navigation_version = '2.4.0-alpha01'
+    }
 
     repositories {
         google()
@@ -25,7 +32,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.0-alpha09'
+        classpath "com.android.tools.build:gradle:$android_gradle_plugin_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
