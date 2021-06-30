@@ -1,2 +1,3 @@
-rootProject.name = "AndroidDevChallenge"
+//rootProject.name = "AndroidDevChallenge"
+rootProject.name = "BloomCompose"
 include ':app'
