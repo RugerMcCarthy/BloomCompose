@@ -17,9 +17,9 @@
 buildscript {
     ext {
         android_gradle_plugin_version = '7.0.0-alpha09'
-        kotlin_version = '1.4.31'
-        compose_version = '1.0.0-beta02'
-        coroutines_version = '1.4.2'
+        kotlin_version = '1.5.10'
+        compose_version = '1.0.0-beta08'//1.0.0-beta09 some low level android device get crash !! libart.so or libart.jar lost
+        coroutines_version = '1.4.3'
     }
 
     repositories {
