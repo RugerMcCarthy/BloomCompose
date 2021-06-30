@@ -69,7 +69,7 @@ android {
     }
 
     buildFeatures {
-        if (android_builder_main_version >= 7 || (android_builder_main_version > 4 && android_builder_mid_version > 3)) {
+        if (android_builder_main_version >= 5 || (android_builder_main_version == 4 && android_builder_mid_version >= 3)) {
             compose true
         }
         // Disable unused AGP features
